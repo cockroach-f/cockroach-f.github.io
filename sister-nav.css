@@ -133,6 +133,15 @@
   font-weight: 600;
 }
 
+/* 面板会超出右边缘时（窄屏）：改成通栏贴顶 sheet，top 由 JS 按顶栏实测高度写入 */
+.sister-nav__panel--sheet {
+  position: fixed;
+  right: .75rem;
+  left: .75rem;
+  width: auto;
+  min-width: 0;
+}
+
 /* 窄屏：顶栏只留图标，面板贴左且不超宽 */
 @media screen and (max-width: 76.1875em) {
   .sister-nav__label {

@@ -100,6 +100,20 @@
       panel.hidden = true;
       button.setAttribute("aria-expanded", "false");
       document.removeEventListener("click", onDocClick);
+      window.removeEventListener("resize", onResize);
+    }
+    function onResize() { if (!panel.hidden) fitPanel(); }
+    /* 窄屏上按钮可能被顶栏标题挤到右侧，面板若会超出右边缘则改成通栏贴顶的 sheet */
+    function fitPanel() {
+      panel.classList.remove("sister-nav__panel--sheet");
+      panel.style.top = "";
+      var r = panel.getBoundingClientRect();
+      if (r.right > window.innerWidth - 8 || r.width > window.innerWidth - 16) {
+        var header = document.querySelector(".md-header");
+        var anchor = header || button;
+        panel.classList.add("sister-nav__panel--sheet");
+        panel.style.top = Math.round(anchor.getBoundingClientRect().bottom + 8) + "px";
+      }
     }
     function onDocClick(e) {
       if (!nav.contains(e.target)) close();
@@ -110,9 +124,12 @@
       panel.hidden = !open;
       button.setAttribute("aria-expanded", open ? "true" : "false");
       if (open) {
+        fitPanel();
         document.addEventListener("click", onDocClick);
+        window.addEventListener("resize", onResize);
       } else {
         document.removeEventListener("click", onDocClick);
+        window.removeEventListener("resize", onResize);
       }
     });
     document.addEventListener("keydown", function (e) {
