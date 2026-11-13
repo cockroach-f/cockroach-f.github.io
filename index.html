@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>light 的讲义 · 全部课程</title>
+<meta name="description" content="light 的课程讲义总站：复变函数、电磁场与电磁波、量子力学、ISAR 目标识别，配 manim 动画可视化。">
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #fff;
+    --ink: rgba(0, 0, 0, .87);
+    --ink-2: rgba(0, 0, 0, .6);
+    --line: rgba(0, 0, 0, .09);
+    --bar: #3949ab;
+    --bar-ink: #fff;
+    --accent: #3949ab;
+    --shadow: 0 1px 3px rgba(0, 0, 0, .1), 0 4px 14px rgba(0, 0, 0, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --ink: rgba(255, 255, 255, .88);
+      --ink-2: rgba(255, 255, 255, .6);
+      --line: rgba(255, 255, 255, .12);
+      --bar: #283593;
+      --accent: #9fa8da;
+      --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 4px 14px rgba(0, 0, 0, .3);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .bar {
+    background: var(--bar);
+    color: var(--bar-ink);
+  }
+  .bar-inner {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: .85rem 1.2rem;
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
+  .bar-inner .dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: .4rem;
+    background: rgba(255, 255, 255, .18);
+    font-size: 1rem;
+  }
+  .bar-inner .gh {
+    margin-left: auto;
+    color: var(--bar-ink);
+    font-size: .85rem;
+    font-weight: 500;
+    opacity: .85;
+    text-decoration: none;
+  }
+  .bar-inner .gh:hover { opacity: 1; text-decoration: underline; }
+  main {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 2.4rem 1.2rem 3rem;
+  }
+  .hero h1 {
+    margin: 0 0 .4rem;
+    font-size: 1.7rem;
+    line-height: 1.3;
+  }
+  .hero p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: .95rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+    gap: 1rem;
+    margin-top: 1.8rem;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    padding: 1.15rem 1.2rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: .7rem;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .12), 0 8px 22px rgba(0, 0, 0, .1);
+  }
+  .card .glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .card h2 {
+    margin: .25rem 0 0;
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+  .card p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: .83rem;
+  }
+  .card .go {
+    margin-top: auto;
+    padding-top: .6rem;
+    color: var(--accent);
+    font-size: .85rem;
+    font-weight: 600;
+  }
+  .card--more {
+    align-items: flex-start;
+    justify-content: center;
+    border-style: dashed;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ink-2);
+  }
+  .card--more:hover { transform: none; box-shadow: none; }
+  .card--more strong { color: var(--ink); font-size: 1rem; }
+  footer {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 1.2rem 2.2rem;
+    color: var(--ink-2);
+    font-size: .8rem;
+  }
+  .loading { color: var(--ink-2); }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-inner">
+    <span class="dot">✎</span>
+    <span>light 的讲义</span>
+    <a class="gh" href="https://github.com/cockroach-f">GitHub ↗</a>
+  </div>
+</header>
+<main>
+  <div class="hero">
+    <h1>全部课程</h1>
+    <p>从零到精通的课程讲义，配 manim 动画可视化与知识点归纳。点一张卡片进入对应课程，各站顶栏的「全部课程」菜单可以随时跳回来。</p>
+  </div>
+  <div class="grid" id="grid">
+    <p class="loading">正在加载课程列表……</p>
+  </div>
+  <noscript><p>请启用 JavaScript 查看课程列表，或访问 <a href="https://github.com/cockroach-f">GitHub 主页</a>。</p></noscript>
+</main>
+<footer>Copyright © 2026 light · 教学用途 · 各站版权信息见站内页脚</footer>
+<script>
+(function () {
+  function textColor(hex) {
+    var m = /^#?([0-9a-f]{6})$/i.exec(hex || "");
+    if (!m) return "#fff";
+    var n = parseInt(m[1], 16);
+    var lum = (0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255;
+    return lum > 0.65 ? "rgba(0,0,0,.78)" : "#fff";
+  }
+  fetch("sites.json")
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) {
+      var grid = document.getElementById("grid");
+      grid.innerHTML = "";
+      (data.sites || []).forEach(function (s) {
+        var a = document.createElement("a");
+        a.className = "card";
+        a.href = s.url;
+        var g = document.createElement("span");
+        g.className = "glyph";
+        g.style.background = s.color;
+        g.style.color = textColor(s.color);
+        g.textContent = s.glyph;
+        var h = document.createElement("h2");
+        h.textContent = s.name;
+        var p = document.createElement("p");
+        p.textContent = s.desc || "";
+        var go = document.createElement("span");
+        go.className = "go";
+        go.textContent = "进入讲义 →";
+        a.appendChild(g); a.appendChild(h); a.appendChild(p); a.appendChild(go);
+        grid.appendChild(a);
+      });
+      var more = document.createElement("div");
+      more.className = "card card--more";
+      more.innerHTML = "<strong>更多课程，持续更新中</strong><span>新讲义会第一时间出现在这里，也会同步到各站顶栏菜单。</span>";
+      grid.appendChild(more);
+    })
+    .catch(function () {
+      document.getElementById("grid").innerHTML =
+        '<p class="loading">课程列表加载失败，请刷新重试，或访问 <a href="https://github.com/cockroach-f">GitHub 主页</a>。</p>';
+    });
+})();
+</script>
+</body>
+</html>
