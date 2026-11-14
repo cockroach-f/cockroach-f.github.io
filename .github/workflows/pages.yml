@@ -24,7 +24,7 @@ jobs:
       - name: Assemble public files
         run: |
           mkdir -p public
-          cp index.html sites.json sister-nav.js sister-nav.css public/
+          cp index.html sites.json sister-nav.js sister-nav.css video-player.js video-player.css public/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
